@@ -1,0 +1,69 @@
+<html>
+        <body><!DOCTYPE html>
+<html>
+    <head></head>
+
+    <body style="text-align:center;font-family:arial" onload="load()">
+        <h3>Timer</h3>
+        <div style="background-color:pink;color:white;padding:5px">
+            <br>
+            <input type="datetime-local" id="time">
+            <button onclick="alarm()" style="">Submit</button>
+            <hr>
+            <h3 id="timeleft" style="display:none">0 Hours, 0 Minutes, 0 Seconds</h3>
+        </div>
+
+        <script>
+            endtime = 0
+            startime = 0
+            difference = 0
+            hours = 0
+            minutes = 0
+            seconds = 0
+            
+            function load(){}
+
+            function alarm(){
+                startime = new Date()
+                endtime = new Date(document.getElementById("time").value)
+                difference = (endtime.getTime() - startime.getTime())/1000
+                hours = Math.floor(difference/3600)
+                minutes = Math.floor((difference-(hours*3600))/60)
+                seconds = Math.floor(difference-(hours*3600+minutes*60))
+                document.getElementById("timeleft").innerHTML = (""+hours+" Hours, "+minutes+" Minutes, "+seconds+" Seconds")
+
+                if (difference<=0){
+                    document.getElementById("timeleft").innerHTML = "Time's up"
+                }
+                document.getElementById("timeleft").style.display = "inline"
+            }
+            
+            setInterval(function (){
+                startime = new Date()
+                endtime = new Date(document.getElementById("time").value)
+                difference = (endtime.getTime() - startime.getTime())/1000
+                hours = Math.floor(difference/3600)
+                minutes = Math.floor((difference-(hours*3600))/60)
+                seconds = Math.floor(difference-(hours*3600+minutes*60))
+                document.getElementById("timeleft").innerHTML = (""+hours+" Hours, "+minutes+" Minutes, "+seconds+" Seconds")
+
+                if (difference<=0){
+                    document.getElementById("timeleft").innerHTML = "Time's up"
+                }
+            }, 1000)
+
+        </script>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+</body>
+        <style></style>
+        <script></script>
+      </html>
